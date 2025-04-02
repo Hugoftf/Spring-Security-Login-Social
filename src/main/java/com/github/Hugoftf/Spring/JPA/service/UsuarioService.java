@@ -27,7 +27,10 @@ public class UsuarioService {
     }
 
     public Usuario obterPorLogin(String login){
-
         return usuarioRepository.findByLogin(login);
+    }
+
+    public Usuario findByEmail(String email){
+        return usuarioRepository.findByEmail(email);
     }
 }

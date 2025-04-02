@@ -1,6 +1,7 @@
 package com.github.Hugoftf.Spring.JPA.config;
 
 import com.github.Hugoftf.Spring.JPA.security.CustomUserDetailsService;
+import com.github.Hugoftf.Spring.JPA.security.LoginSocialSuccessHandle;
 import com.github.Hugoftf.Spring.JPA.service.UsuarioService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +29,9 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecutiryConfiguration {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            LoginSocialSuccessHandle loginSocialSuccessHandle) throws Exception{
         return http
                 .csrf(AbstractHttpConfigurer::disable)
 //                .formLogin(configurer ->{
@@ -43,7 +46,9 @@ public class SecutiryConfiguration {
                     authorize.anyRequest().authenticated();
 
                 })
-                .oauth2Login(Customizer.withDefaults())
+                .oauth2Login(oauth2 -> {
+                    oauth2.successHandler(loginSocialSuccessHandle);
+                })
                 .build();
     }
 
