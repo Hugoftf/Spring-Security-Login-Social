@@ -160,3 +160,73 @@ Agora iremos cadastro o novo usuario no banco de dados. Seguindo para o postman,
 ![imagem local](imagem_readme/Postman/POST_adicionando_com_email.png)
 
 
+Agora checando no banco de dados:
+
+
+![imagem local](/imagem_readme/postgre/novo_usuario_com_email.png)
+
+
+
+### Autenticando login do google e associando a Usuario do banco de dados
+
+
+Primeiro precisamos adicionar no nosso UsuarioRepository, o metodo findByEmail, para que possamos encontrar o usuario no banco de dados por email e assim associar a nossa conta do google:
+
+
+![imagem local](imagem_readme/UsuarioRepository/interface_UsuarioRepository_metodo_findByEmail.png)
+
+
+Depois na camada service, adicionar o metodo obterUsuarioPorEmail:
+
+
+![imagem local](/imagem_readme/Service/classe_UsuarioService_metodo_findbyemail.png)
+
+
+Agora camada Security, criamos a classe LoginSocialSuccessHandler, ela será anotada com a anotação @Component para ser gerenciada pela spring como bean, e estender a classe SavedRequestAwareAuthenticationSuccessHandler. Essa classe vai servir para que quando estivermos logando pelo google, conseguirmos coletar informações de login para autenticar e então retornar para outra pagina web.
+
+A classe:
+
+
+![imagem local](/imagem_readme/security/classe_LoginSocialSuccessHandle.png)
+
+
+O metodo da classe:
+
+
+![imagem local](/imagem_readme/security/classe_LoginSocialSuccessHandle_metodo_onAuthenticationSuccess.png)
+
+
+Coletando email e associando com nosso usuario e depois autenticando.
+
+
+No nosso  LoginViewController, vamos refator o metodo paginaHome, para receber uma validação de instaceOf:
+
+
+![imagem local](/imagem_readme/security/classe_LoginViewController_metodo_paginaHome_refatorado.png)
+
+
+Agora no config_security refator o metodo sucurityFilterChain:
+
+
+![imagem local](imagem_readme/config_security/BEAN_sucurityFilterChain_refatorado.png)
+
+
+Agora vamos testar, no bowser:
+
+
+![imagem local](/imagem_readme/Bowser/localhost_login_com_google.png)
+
+
+Quando logamos via google:
+
+
+![imagem local](/imagem_readme/Bowser/localhost_login_com_google_retorno_sucesso.png)
+
+
+Agora sim, usuario autenticado.
+
+
+
+
+
+
