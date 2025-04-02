@@ -4,6 +4,7 @@ import com.github.Hugoftf.Spring.JPA.controller.dto.UsuarioDTO;
 import com.github.Hugoftf.Spring.JPA.controller.mappers.UsuarioMapper;
 import com.github.Hugoftf.Spring.JPA.model.Usuario;
 import com.github.Hugoftf.Spring.JPA.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void salvarUsuario(@RequestBody UsuarioDTO dto){
+    public void salvarUsuario(@RequestBody @Valid UsuarioDTO dto){
         Usuario usuario = usuarioMapper.toEntity(dto);
         usuarioService.salvar(usuario);
     }
