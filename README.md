@@ -105,7 +105,7 @@ O segundo metodo por agora não alternada.
 O terceiro e quarto metodo básicamente retornar informações sobre o usuario.
 
 
-![imagem local](/imagem_readme/security/lasse_CustomAuthentication_metodos_parte2.png)
+![imagem local](/imagem_readme/security/classe_CustomAuthentication_metodos_parte2.png)
 
 
 No metodo isAthentication sempre deixe marcado como true, para que ele sempre esteja authenticado.
@@ -152,5 +152,11 @@ E depois mapeando o DTO UsuarioDTO, adicionando validações:
 
 
 ![imagem local](/imagem_readme/DTO/Record_UsuarioDTO_mapeado.png)
+
+
+Agora iremos cadastro o novo usuario no banco de dados. Seguindo para o postman, iremos fazer um POST:
+
+
+![imagem local](imagem_readme/Postman/POST_adicionando_com_email.png)
 
 
