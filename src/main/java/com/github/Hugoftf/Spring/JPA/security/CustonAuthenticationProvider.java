@@ -32,7 +32,6 @@ public class CustonAuthenticationProvider implements AuthenticationProvider {
         if (usuarioEcontrado == null) {
             throw new UsernameNotFoundException("Usuario ou senha incorretos!");
         }
-
         String senhaCriptografada = usuarioEcontrado.getSenha();
 
         boolean senharBatem = passwordEncoder.matches(senhaDigitada, senhaCriptografada);
@@ -40,7 +39,6 @@ public class CustonAuthenticationProvider implements AuthenticationProvider {
         if (senharBatem){
             return new CustomAuthentication(usuarioEcontrado);
         }
-
         throw new UsernameNotFoundException("Usuario ou senha incorretos!");
     }
 
