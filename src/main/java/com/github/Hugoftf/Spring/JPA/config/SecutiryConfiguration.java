@@ -50,7 +50,7 @@ public class SecutiryConfiguration {
         return new BCryptPasswordEncoder(10);
     }
 
-    @Bean
+    //@Bean
     public UserDetailsService userDetailsService(UsuarioService usuarioService){
         return new CustomUserDetailsService(usuarioService);
     }
