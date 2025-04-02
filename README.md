@@ -8,7 +8,7 @@
   - [Tecnologias Usadas](#Tecnologias-Usadas)
   - [Sobre](#Sobre)
   - [Inicio](#Inicio)
-  - [Configurações](#Configurações)
+  - [Authetication](#Authentication)
 
   
 ## Tecnologias Usadas
@@ -80,7 +80,7 @@ Quando tentando logar com o google:
 Conseguirmos associar com nosso projeto, porém não conseguimos authenticar o login do google por que precisamos de configurações adicionais no nosso projeto. Com isso precisamos modificar nosso projeto de autenticação que está como padrão.
 
 
-## Configurações
+## Authentication
 
 
 Por padrão, arquitetos de Spring Security recomenda que você faça suas próprias Authentication ao invés de usar recursos provido do Spring, assim você tem uma maior flexibilidade para gerar sua aplicação, para isso vamos criar a classe Authentication:
@@ -136,5 +136,21 @@ Com isso ao iniciar e testar no postman o retorno:
 
 ![imagem local](imagem_readme/Postman/Postman_GET_Teste.png)
 
+
+### Autenticação com google
+
+
+Para que possamos autenticar o login do google no nosso sistema, precisamos antes de alguma informação que o google passa para o spring que esteja alinhado com as informações do usuario do nosso sistema. Para isso iremos adicionar a coluna Email na nossa tabela Usuario. Antes teremos que dropar os dois usuarios cadastrados no sistema (Admin e operador), e depois a tabela Usuario para adicionar a coluna email. Feito isso mapearmos a entidade Usuarios:
+
+Usuario com novo campo:
+
+
+![imagem local](/imagem_readme/Entidade/Classe_Usuario_campo_email.png)
+
+
+E depois mapeando o DTO UsuarioDTO, adicionando validações:
+
+
+![imagem local](/imagem_readme/DTO/Record_UsuarioDTO_mapeado.png)
 
 
