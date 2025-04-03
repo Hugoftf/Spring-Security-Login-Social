@@ -252,7 +252,53 @@ E o retorno do nova tela de formulario de login:
 
 
 
-#### 
+#### Cadastrando Novo Usuario a Partir do Login com Google
+
+
+Na classe LoginSocialSuccessHandle iremos criar uma constante para referncia a uma senha, ela vai servi para quando os usuarios logados com google não estiverem no banco de dados sejam cadastrado com essa senha.
+
+
+
+![imagem local](/imagem_readme/security/classe_LoginSocial_constante.png)
+
+
+
+Depois disso iremos criar dois metodos auxiliar para cadastrar novos usuarios:
+
+
+
+![imagem local](/imagem_readme/security/classe_LoginSocial_metodo_cadastraUsuario_encurtarLogin.png)
+
+
+O primeiro metodo vai servi para cadastrar novos usuarios e o segundo vai servi para criar um login a partir do email, retirando o sufixo do @gmail.com.
+
+
+O proximo passo é adicionar uma validação no metodo principal e adicionar o metodo para cadastrar o usuario:
+
+
+
+![imagem local](/imagem_readme/security/classe_LoginSocial_metodo_onAuthenticationSuccess_atualizado.png)
+
+
+
+Agora ao tentar logar no google com email que não está cadastrado no banco de dados, o programa irá criar um novo:
+
+
+![imagem local](/imagem_readme/Bowser/login_com_nova_conta_google.png)
+
+
+retorno:
+
+
+![imagem local](/imagem_readme/Bowser/login_com_nova_conta_google_sucesso.png)
+
+
+No banco de dados:
+
+
+![imagem local](/imagem_readme/postgre/novo_usuario_com_email_google_cadastrado.png)
+
+
 
 
 
