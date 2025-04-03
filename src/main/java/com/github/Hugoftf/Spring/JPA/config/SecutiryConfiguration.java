@@ -34,10 +34,9 @@ public class SecutiryConfiguration {
             LoginSocialSuccessHandle loginSocialSuccessHandle) throws Exception{
         return http
                 .csrf(AbstractHttpConfigurer::disable)
-//                .formLogin(configurer ->{
-//                    configurer.loginPage("/login");
-//                })
-                .formLogin(Customizer.withDefaults())
+                .formLogin(configurer ->{
+                    configurer.loginPage("/login");
+                })
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize ->{
                     authorize.requestMatchers("/login").permitAll();
@@ -47,6 +46,7 @@ public class SecutiryConfiguration {
 
                 })
                 .oauth2Login(oauth2 -> {
+                    oauth2.loginPage("/login");
                     oauth2.successHandler(loginSocialSuccessHandle);
                 })
                 .build();
