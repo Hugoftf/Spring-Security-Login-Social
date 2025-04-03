@@ -223,7 +223,37 @@ Quando logamos via google:
 ![imagem local](/imagem_readme/Bowser/localhost_login_com_google_retorno_sucesso.png)
 
 
+
 Agora sim, usuario autenticado.
+
+
+#### Usando o proprio Formulario de Login Via Oauth2
+
+
+Agora vamos utilizar o próprio formulario de login criado a partir do html. Na classe SecurityConfiguration, no bean securrityFilterChain removemos novamente o formulario padrão para adicionar o criado no html chamando-o no oath2:
+
+
+
+![imagem local](imagem_readme/config_security/BEAN_securityFilterChain_atualizado.png)
+
+
+
+Agora no nosso arquivo html, iremos adicionar o link para logar com o google:
+
+
+![imagem local](/imagem_readme/HTML_com_login_Google.png)
+
+
+
+E o retorno do nova tela de formulario de login:
+
+
+![imagem local](/imagem_readme/Bowser/nova_tela_login.png)
+
+
+
+#### 
+
 
 
 
